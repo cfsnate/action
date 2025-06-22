@@ -127,10 +127,10 @@ func GenerateCloudWatchConfig(action *githubactions.Action, metrics []string, ne
 	action.Infof("Config content: %s", string(configJSON))
 
 	// Append the config to the running CloudWatch agent
-	return appendCloudWatchConfig(action, configPath)
+	return configStartCloudWatchAgent(action, configPath)
 }
 
-func appendCloudWatchConfig(action *githubactions.Action, configPath string) error {
+func configStartCloudWatchAgent(action *githubactions.Action, configPath string) error {
 	// Check if CloudWatch agent installation exists
 	agentBinDir := "/opt/aws/amazon-cloudwatch-agent/bin/"
 	if _, err := os.Stat(agentBinDir); os.IsNotExist(err) {
