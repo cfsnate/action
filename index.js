@@ -33,6 +33,7 @@ function main() {
         console.log('Not running on RunsOn runner, skipping all operations')
         process.exit(0)
     }
+    
     const binary = chooseBinary()
     const mainScript = path.join(__dirname, binary)
     if (os.platform() === WINDOWS) {
